@@ -24,6 +24,9 @@ const addBook = async(req, res) => {
         }
 
         const saved = await bookService.addBook(newBook);
+        if(!saved){
+            throw {status: false, message: "Unable to save book!!!"};
+        }
         return res.json({status: true, message: "Book saved successfully!!!"});
     }catch(err){
         return res.json({status: false, message: err.message}); 

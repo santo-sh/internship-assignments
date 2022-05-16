@@ -4,8 +4,10 @@ const Author = require('../models/Author')
 const addBook = async(obj) => {
     try{
         const newBook = await new Book(obj).save();
+        return true;
     }catch(err){
         console.log("Error:", err);
+        return false;
     }
 }
 
