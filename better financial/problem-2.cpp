@@ -3,13 +3,18 @@ using namespace std;
 
 vector<double>arr;
 long double sum = 0;
+double minScore = DBL_MAX, maxScore = DBL_MIN;
 
 double getAverage(){
-    return (sum)/arr.size();
+    if(arr.size() <= 2)
+        return (sum)/arr.size();
+    return (sum - minScore - maxScore)/(arr.size() - 2);
 }
 
 void addScore(double n){
     arr.push_back(n);
+    minScore = min(minScore, n);
+    maxScore = max(maxScore, n);
     sum+=n;
 }
 
